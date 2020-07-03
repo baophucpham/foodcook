@@ -13,6 +13,9 @@ import mitkho from './mitkho.jpg';
 import namkho from './namkho.jpg';
 import star from './star.png';
 import star2 from './star2.png';
+import trash from './trash.png';
+import arrow from './curved-arrow.png';
+import add from './add.png';
 
 export{
     avatar1,
@@ -29,5 +32,8 @@ export{
     mitkho,
     namkho,
     star,
-    star2
+    star2,
+    trash,
+    arrow,
+    add,
 }

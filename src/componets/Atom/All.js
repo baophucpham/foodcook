@@ -68,17 +68,25 @@ export default class All extends React.Component {
             </View>
 
             <TouchableOpacity
-                onPress={() => {this.props.navigation.navigate("Detail", {
-                    image: item.image,
-                    price: item.price,
-                    name: item.name,
-                })}
+                onPress={() => {
+                    this.props.navigation.navigate("Detail", {
+                        image: item.image,
+                        price: item.price,
+                        name: item.name,
+                    })
+                }
                 }
                 style={styles.button}>
-                <AntDesign
-                    name={"arrowright"}
-                    color="green"
-                    size={20}
+                <Image
+                    style={styles.iconArrow}
+                    source={imageURl.arrow}
+                />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.buttonDelete}>
+                <Image
+                    style={styles.deletIcon}
+                    source={imageURl.trash}
                 />
             </TouchableOpacity>
 
@@ -170,6 +178,10 @@ var styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    iconArrow: {
+        width: 15,
+        height: 15,
+    },
     price_container: {
         flexDirection: 'row',
         marginTop: 50,
@@ -183,5 +195,17 @@ var styles = StyleSheet.create({
     textPrice: {
         color: 'green',
         fontWeight: 'bold',
+    },
+    buttonDelete: {
+        width: 30,
+        height: 30,
+        backgroundColor: '#2DCC9F',
+        borderRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    deletIcon: {
+        width: 20,
+        height: 20,
     },
 });
