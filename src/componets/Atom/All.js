@@ -1,6 +1,6 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TouchableHighlight, TextInput, Modal, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
 import * as imageURl from '../../Assets/images/imageURL';
 import Data from '../../Assets/images/data_all';
 import AntDesign from 'react-native-vector-icons/AntDesign';

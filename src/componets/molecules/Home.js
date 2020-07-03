@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
-import { View, Text, StyleSheet, ImageBackground, Dimensions,Button } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Dimensions } from "react-native";
 import * as imageURl from '../../Assets/images/imageURL';
 import Material from './MaterialTopTab';
 import All from "../Atom/All";

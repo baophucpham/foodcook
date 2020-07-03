@@ -6,7 +6,8 @@ export default Data = [
             name:'Stewed Mushrooms',
             image: nam,
             rating: 3,
-            price: "$12"
+            price: "$12",
+            formula:{},
         },
         {
             name:'Jackfruit Fried',

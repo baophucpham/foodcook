@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, Dimensions, Image, TextInput, Button, Alert } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Dimensions, Image, TouchableOpacity, ScrollView } from 'react-native';
 import * as imageURl from '../../Assets/images/imageURL';
 import IoniCon from "react-native-vector-icons/Ionicons";
 import { color } from 'react-native-reanimated';
@@ -21,14 +21,23 @@ export default class DentailComponent extends React.Component {
           </View>
 
         </ImageBackground>
+
         <View style={styles.footer}>
           <View style={styles.status}>
             <Text style={{ color: 'green' }}>AVALIABLE</Text>
           </View>
-
+          <ScrollView style={styles.scroll}>
     <Text style={styles.textPrice}>{this.props.route.params.price}</Text>
     <Text numberOfLines={2} style={styles.textName}>{this.props.route.params.name.toUpperCase()}</Text>
+    <Text>Nấm Rơm Kho Tiêu Chay với vị đậm đà, là một trong những món chay quen thuộc trong ngày chay thuần Việt. Cách làm nấm rơm kho tiêu không khó, vị nấm ngọt tự nhiên, kết hợp cùng các gia vị đơn thuần, tạo nên món ăn ngon, vừa chống ngán cho bữa cơm ngán thịt hay ngày chay, mà còn rất tốt cho sức khỏe. Ngày bận rộn, nấm rơm kho tiêu là lựa chọn lý tưởng đấy.</Text>
+    <View>
+          <TouchableOpacity style={styles.buttom}>
+          <Text style={styles.textButtom}>EDIT</Text>
+          </TouchableOpacity>
         </View>
+        </ScrollView>
+        </View>
+        
       </View>
     )
   }
@@ -67,6 +76,9 @@ var styles = StyleSheet.create({
     paddingVertical: 3,
     borderColor: 'green'
   },
+  scroll:{
+    borderRadius:12
+  },
   input: {
     width: 40,
     justifyContent: 'center',
@@ -89,5 +101,14 @@ var styles = StyleSheet.create({
     fontWeight:'bold',
     fontSize:45,
     marginTop:5,
-  }
+  },
+  buttom:{
+    alignItems:'center'
+  },
+  textButtom: {
+    color:'green',
+    fontWeight:'bold',
+    fontSize:25,
+    padding:30
+  },
 })
