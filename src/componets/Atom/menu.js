@@ -21,9 +21,7 @@ export default class Menu extends React.Component {
             <TouchableOpacity 
             style={styles.item_type}
             onPress={()=>this.props.navigation.navigate("Detail", {
-                image: item.image,
-                price: item.price,
-                name: item.name,
+                item:item
             })} >
                 <Image
                     source={item.image}
@@ -81,7 +79,6 @@ export default class Menu extends React.Component {
                                         showsVerticalScrollIndicator={false}
                                         ItemSeparatorComponent={this.ItemSeparatorComponent_type}
                                     >
-
                                     </FlatList>
                                 </View>
 

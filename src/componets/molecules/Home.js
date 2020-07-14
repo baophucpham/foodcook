@@ -12,10 +12,13 @@ import HomeTap from "./MaterialTopTab"
 
 
 export default class HomeComponent extends React.Component {
+    
     render() {
+  
         return (
             <View style={styles.containerhead}>
-                <View style={styles.header}>
+                <View 
+                style={styles.header}>
 
                     <ImageBackground source={imageURl.header}
                         style={styles.ImageBackground}>
@@ -24,14 +27,11 @@ export default class HomeComponent extends React.Component {
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate("Add")}
                             style={styles.iconAdd}>
-
                             <Image
                                 style={styles.addIcon}
                                 source={imageURl.add}
                             />
                         </TouchableOpacity>
-
-
                     </ImageBackground>
 
                 </View>
@@ -54,7 +54,6 @@ var styles = StyleSheet.create({
     },
     header: {
         flex: 1,
-        marginTop: 20,
         position: 'absolute',
     },
     textButtom: {

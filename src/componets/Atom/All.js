@@ -1,9 +1,8 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image, Alert ,AsyncStorage} from "react-native";
 import * as imageURl from '../../Assets/images/imageURL';
 import Data from '../../Assets/images/data_all';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 export default class All extends React.Component {
@@ -12,10 +11,7 @@ export default class All extends React.Component {
         this.initData = Data;
         this.state = {
             Data: this.initData,
-            isModalVisible: false,
-            textInput: '',
-            editedItem: 0
-
+            //activeRowKey: null,
         };
 
     }
@@ -40,6 +36,7 @@ export default class All extends React.Component {
         }
         return rating;
     }
+
 
     renderItem = ({ item }) => {
         return <LinearGradient
@@ -70,9 +67,7 @@ export default class All extends React.Component {
             <TouchableOpacity
                 onPress={() => {
                     this.props.navigation.navigate("Detail", {
-                        image: item.image,
-                        price: item.price,
-                        name: item.name,
+                        item: item
                     })
                 }
                 }
@@ -83,7 +78,11 @@ export default class All extends React.Component {
                 />
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonDelete}>
+            <TouchableOpacity
+            //Xoa du lieu
+            onPress={() => this.alertDelete(item.name)}
+                style={styles.buttonDelete}>
+
                 <Image
                     style={styles.deletIcon}
                     source={imageURl.trash}
@@ -92,6 +91,33 @@ export default class All extends React.Component {
 
         </LinearGradient>
     }
+
+    alertDelete(index, foodName) {
+        Alert.alert("Recipe",
+        "Delete the recipe " + foodName + " ?",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          {
+            text: "OK", onPress: () => this.delete(index)
+          }
+        ],
+        { cancelable: false })
+    }
+
+    async delete(index) {
+        var arrTemp = this.state.Data;
+        const { name } = this.props.navigation.state.params.name;
+        arrTemp = arrTemp.filter(e => e.id != index);
+        await AsyncStorage.setItem(name, JSON.stringify(arrTemp))
+        this.setState({
+          arrTemp: JSON.parse(await AsyncStorage.getItem(name))
+        })
+        console.log("DELETE", this.state.arrTemp);
+      }
 
 
     ItemSeparatorComponent = () => {
@@ -116,7 +142,7 @@ export default class All extends React.Component {
                         renderItem={this.renderItem}
                         keyExtractor={(item) => item.name.toString()}
                         ItemSeparatorComponent={this.ItemSeparatorComponent}
-                        showsVerticalScrollIndicator={false}
+                        showsVerticalScrollIndicator={true}
                     />
 
                 </View>
@@ -125,6 +151,8 @@ export default class All extends React.Component {
         )
     }
 }
+
+//style sheet
 var styles = StyleSheet.create({
     container: {
         flex: 1,
